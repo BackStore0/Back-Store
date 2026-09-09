@@ -2,48 +2,44 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Back Store - المتجر</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="animated-bg"></div>
-    <header>
-<!-- ضع هذا السطر داخل <head> لتغيير أيقونة المتصفح -->
-<link rel="icon" type="image/png" href="logo.png">
 
-<!-- الشريط العلوي الموحد -->
-<nav class="navbar">
-    <div class="nav-container">
-        <!-- زاوية بيانات الحساب / تسجيل الدخول -->
-        <div id="auth-section">
-            <a href="login.html" class="btn-login-nav" id="nav-login-btn">
-                <i class="fa-solid fa-right-to-bracket"></i> تسجيل الدخول
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Logo" class="logo-img" onerror="this.src='https://cdn-icons-png.flaticon.com/512/681/681494.png'">
+                <span>Back Store</span>
             </a>
-        </div>
 
-        <!-- وروابط القائمة -->
-        <div class="nav-links">
-            <a href="rules.html" class="nav-link"><i class="fa-solid fa-gavel"></i> القوانين</a>
-            <a href="about.html" class="nav-link"><i class="fa-solid fa-circle-info"></i> عن المتجر</a>
-            <a href="store.html" class="nav-link"><i class="fa-solid fa-store"></i> المتجر</a>
-            <a href="index.html" class="nav-link active"><i class="fa-solid fa-house"></i> الرئيسية</a>
-        </div>
+            <nav class="nav-capsule">
+                <a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i> الرئيسية</a>
+                <a href="store.html" class="nav-link active"><i class="fa-solid fa-bag-shopping"></i> المتجر</a>
+                <a href="rules.html" class="nav-link"><i class="fa-solid fa-scroll"></i> القوانين</a>
+                <a href="about.html" class="nav-link"><i class="fa-solid fa-circle-info"></i> من نحن</a>
+                <a href="licenses.html" class="nav-link"><i class="fa-solid fa-download"></i> تنزيلاتي</a>
+            </nav>
 
-        <!-- اللوجو واسم المتجر -->
-        <div class="logo">
-            <span>Back Store</span>
-            <img src="logo.png" alt="Back Store Logo" class="logo-img">
+            <div id="auth-section">
+                <a href="login.html" class="btn-login-nav">
+                    <i class="fa-solid fa-right-to-bracket"></i> تسجيل الدخول
+                </a>
+            </div>
         </div>
-    </div>
-</nav>
     </header>
 
     <main class="container">
-        <h2><i class="fa-solid fa-boxes-stacked"></i> المنتجات المتاحة</h2>
-        <div id="productsContainer" class="products-grid">
-            <!-- يتم تحميل المنتجات تلقائياً من localStorage بواسطة JS -->
+        <h1 style="margin-bottom: 20px;">المنتجات المتاحة</h1>
+        <div id="product-list" class="glass-card">
+            <!-- سيتم تحميل المنتجات هنا عبر script.js -->
         </div>
     </main>
+
     <script src="script.js"></script>
 </body>
 </html>

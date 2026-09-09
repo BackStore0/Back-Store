@@ -144,8 +144,37 @@ function viewProduct(id) {
         window.location.href = 'product.html';
     }
 }
-
 window.onload = () => {
     checkAuthStatus();
     renderProducts();
 };
+// حفظ حالة الدخول في localStorage
+document.addEventListener("DOMContentLoaded", () => {
+    const userSession = localStorage.getItem("userLoggedIn");
+    
+    // إجبار تسجيل الدخول عند فتح الموقع أول مرة
+    if (!userSession && window.location.pathname !== "/login.html") {
+        window.location.href = "login.html";
+    }
+
+    updateNavigationUI();
+});
+
+function loginUser(userData) {
+    localStorage.setItem("userLoggedIn", JSON.stringify(userData));
+    window.location.href = "index.html";
+}
+
+function updateNavigationUI() {
+    const user = JSON.parse(localStorage.getItem("userLoggedIn"));
+    const loginBtn = document.getElementById("login-btn");
+    
+    if (user && loginBtn) {
+        loginBtn.innerHTML = `<img src="${user.avatar}" class="nav-avatar"> ${user.username}`;
+    }
+}
+
+// زر شراء الآن للتحويل إلى الديسكورد في نافذة جديدة
+function buyNow(discordLink) {
+    window.open(discordLink, '_blank');
+}

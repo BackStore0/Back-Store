@@ -9,9 +9,9 @@
 </head>
 <body class="login-body">
 
-    <!-- حاوية تسجيل الدخول المرفوعة والمركزة -->
+    <!-- حاوية متمركزة تماماً بالمنتصف -->
     <div class="login-wrapper">
-        <div class="login-box">
+        <div class="login-box rainbow-border">
             <h2><i class="fa-solid fa-right-to-bracket"></i> تسجيل الدخول</h2>
             
             <!-- التنبيه الأحمر -->
@@ -20,20 +20,20 @@
                 <span>تنبيه: يجب أن تكون متواجدًا في سيرفر الديسكورد ليصلك كود التحقق!</span>
             </div>
 
-            <!-- النموذج الأول: اسم المستخدم -->
+            <!-- النموذج الأول: إدخال اسم المستخدم -->
             <form id="step-1-form">
                 <div class="input-group">
                     <label for="discord-username"><i class="fa-brands fa-discord"></i> اسم المستخدم في الديسكورد (Username):</label>
-                    <input type="text" id="discord-username" placeholder="مثال: custom_username" required>
+                    <input type="text" id="discord-username" placeholder="مثال: custom_username" required autocomplete="off">
                 </div>
                 <button type="submit" id="send-code-btn" class="btn-primary">إرسال كود التحقق</button>
             </form>
 
-            <!-- النموذج الثاني: كود التحقق -->
+            <!-- النموذج الثاني: إدخال كود التحقق (مخفي افتراضياً) -->
             <form id="step-2-form" style="display: none; margin-top: 20px;">
                 <div class="input-group">
                     <label for="verify-code"><i class="fa-solid fa-lock"></i> كود التحقق:</label>
-                    <input type="text" id="verify-code" placeholder="أدخل الكود المكون من 4 أرقام" required>
+                    <input type="text" id="verify-code" placeholder="أدخل الكود المكون من 4 أرقام (مثال التجربة: 1234)" required autocomplete="off">
                 </div>
                 <button type="submit" id="verify-btn" class="btn-success">تأكيد الدخول</button>
             </form>

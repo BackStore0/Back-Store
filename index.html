@@ -7,24 +7,34 @@
 </head>
 <body>
     <div class="animated-bg"></div>
+<!-- ضع هذا السطر داخل <head> لتغيير أيقونة المتصفح -->
+<link rel="icon" type="image/png" href="logo.png">
 
-    <header>
-        <div class="logo-container">
-            <img src="https://files.catbox.moe/a1s4gp.jpg" alt="Logo">
+<!-- الشريط العلوي الموحد -->
+<nav class="navbar">
+    <div class="nav-container">
+        <!-- زاوية بيانات الحساب / تسجيل الدخول -->
+        <div id="auth-section">
+            <a href="login.html" class="btn-login-nav" id="nav-login-btn">
+                <i class="fa-solid fa-right-to-bracket"></i> تسجيل الدخول
+            </a>
+        </div>
+
+        <!-- وروابط القائمة -->
+        <div class="nav-links">
+            <a href="rules.html" class="nav-link"><i class="fa-solid fa-gavel"></i> القوانين</a>
+            <a href="about.html" class="nav-link"><i class="fa-solid fa-circle-info"></i> عن المتجر</a>
+            <a href="store.html" class="nav-link"><i class="fa-solid fa-store"></i> المتجر</a>
+            <a href="index.html" class="nav-link active"><i class="fa-solid fa-house"></i> الرئيسية</a>
+        </div>
+
+        <!-- اللوجو واسم المتجر -->
+        <div class="logo">
             <span>Back Store</span>
+            <img src="logo.png" alt="Back Store Logo" class="logo-img">
         </div>
-        <nav>
-            <ul>
-                <li><a href="index.html" class="active"><i class="fa-solid fa-house"></i> الرئيسية</a></li>
-                <li><a href="store.html"><i class="fa-solid fa-store"></i> المتجر</a></li>
-                <li><a href="about.html"><i class="fa-solid fa-circle-info"></i> عن المتجر</a></li>
-                <li><a href="rules.html"><i class="fa-solid fa-gavel"></i> القوانين</a></li>
-            </ul>
-        </nav>
-        <div class="auth-btns">
-            <button id="loginBtn" onclick="openAuthModal()"><i class="fa-solid fa-right-to-bracket"></i> تسجيل الدخول</button>
-        </div>
-    </header>
+    </div>
+</nav>
 
     <main class="container">
         <!-- مربع شفاف زجاجي بدون خلفيات سوداء معتمة -->

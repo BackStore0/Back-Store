@@ -4,38 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Back Store - تسجيل الدخول</title>
+    <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="login-body">
 
-    <!-- حاوية متمركزة تماماً بالمنتصف -->
     <div class="login-wrapper">
-        <div class="login-box rainbow-border">
-            <h2><i class="fa-solid fa-right-to-bracket"></i> تسجيل الدخول</h2>
-            
-            <!-- التنبيه الأحمر -->
-            <div class="alert-banner">
-                <i class="fa-solid fa-circle-exclamation"></i>
-                <span>تنبيه: يجب أن تكون متواجدًا في سيرفر الديسكورد ليصلك كود التحقق!</span>
+        <div class="login-card">
+            <div class="card-header">
+                <img src="logo.png" alt="Logo" class="login-logo">
+                <h2>تسجيل الدخول</h2>
+                <p>مرحباً بك مجدداً في Back Store</p>
             </div>
 
-            <!-- النموذج الأول: إدخال اسم المستخدم -->
+            <div class="alert-box">
+                <i class="fa-solid fa-circle-info"></i>
+                <span>تنبيه: يجب أن تكون متواجدًا في سيرفر الديسكورد تصلك الرسائل.</span>
+            </div>
+
             <form id="step-1-form">
-                <div class="input-group">
-                    <label for="discord-username"><i class="fa-brands fa-discord"></i> اسم المستخدم في الديسكورد (Username):</label>
-                    <input type="text" id="discord-username" placeholder="مثال: custom_username" required autocomplete="off">
+                <div class="input-field">
+                    <label for="discord-username">اسم المستخدم في الديسكورد (Username)</label>
+                    <div class="input-wrapper">
+                        <i class="fa-brands fa-discord"></i>
+                        <input type="text" id="discord-username" placeholder="username" required autocomplete="off">
+                    </div>
                 </div>
-                <button type="submit" id="send-code-btn" class="btn-primary">إرسال كود التحقق</button>
+                <button type="submit" class="btn-submit">إرسال كود التحقق</button>
             </form>
 
-            <!-- النموذج الثاني: إدخال كود التحقق (مخفي افتراضياً) -->
-            <form id="step-2-form" style="display: none; margin-top: 20px;">
-                <div class="input-group">
-                    <label for="verify-code"><i class="fa-solid fa-lock"></i> كود التحقق:</label>
-                    <input type="text" id="verify-code" placeholder="أدخل الكود المكون من 4 أرقام (مثال التجربة: 1234)" required autocomplete="off">
+            <form id="step-2-form" style="display: none;">
+                <div class="input-field">
+                    <label for="verify-code">كود التحقق الخاص بك</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-key"></i>
+                        <input type="text" id="verify-code" placeholder="1234" required autocomplete="off">
+                    </div>
                 </div>
-                <button type="submit" id="verify-btn" class="btn-success">تأكيد الدخول</button>
+                <button type="submit" class="btn-submit btn-confirm">تأكيد الدخول</button>
             </form>
 
             <div id="status-message" class="status-msg"></div>

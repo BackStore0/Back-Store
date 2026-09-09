@@ -2,77 +2,49 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Back Store - الرئيسية</title>
+    <link rel="icon" type="image/png" href="https://i.imgur.com/vH9f4jN.jpg">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="animated-bg"></div>
-<!-- ضع هذا السطر داخل <head> لتغيير أيقونة المتصفح -->
-<link rel="icon" type="image/png" href="logo.png">
 
-<!-- الشريط العلوي الموحد -->
-<nav class="navbar">
-    <div class="nav-container">
-        <!-- زاوية بيانات الحساب / تسجيل الدخول -->
-        <div id="auth-section">
-            <a href="login.html" class="btn-login-nav" id="nav-login-btn">
-                <i class="fa-solid fa-right-to-bracket"></i> تسجيل الدخول
-            </a>
-        </div>
+    <!-- الشريط العلوي الموحد -->
+    <header class="navbar">
+        <div class="nav-container">
+            <!-- زاوية تسجيل الدخول / حساب المستخدم -->
+            <div id="auth-section">
+                <a href="login.html" class="btn-login-nav" id="nav-login-btn">
+                    <i class="fa-solid fa-right-to-bracket"></i> تسجيل الدخول
+                </a>
+            </div>
 
-        <!-- وروابط القائمة -->
-        <div class="nav-links">
-            <a href="rules.html" class="nav-link"><i class="fa-solid fa-gavel"></i> القوانين</a>
-            <a href="about.html" class="nav-link"><i class="fa-solid fa-circle-info"></i> عن المتجر</a>
-            <a href="store.html" class="nav-link"><i class="fa-solid fa-store"></i> المتجر</a>
-            <a href="index.html" class="nav-link active"><i class="fa-solid fa-house"></i> الرئيسية</a>
-        </div>
+            <!-- روابط القائمة -->
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link active"><i class="fa-solid fa-house"></i> الرئيسية</a>
+                <a href="store.html" class="nav-link"><i class="fa-solid fa-store"></i> المتجر</a>
+                <a href="about.html" class="nav-link"><i class="fa-solid fa-circle-info"></i> عن المتجر</a>
+                <a href="rules.html" class="nav-link"><i class="fa-solid fa-gavel"></i> القوانين</a>
+            </nav>
 
-        <!-- اللوجو واسم المتجر -->
-        <div class="logo">
-            <span>Back Store</span>
-            <img src="logo.png" alt="Back Store Logo" class="logo-img">
+            <!-- اللوجو واسم المتجر -->
+            <div class="logo">
+                <span>Back Store</span>
+                <img src="https://i.imgur.com/vH9f4jN.jpg" alt="Logo" class="logo-img">
+            </div>
         </div>
-    </div>
-</nav>
+    </header>
 
     <main class="container">
-        <!-- مربع شفاف زجاجي بدون خلفيات سوداء معتمة -->
-        <section class="glass-card" style="text-align: center; padding: 70px 20px;">
-            <i class="fa-solid fa-rocket" style="font-size: 3.5rem; color: #fff; margin-bottom: 20px;"></i>
-            <h1 style="font-size: 2.8rem; margin-bottom: 15px;">Enhance your server experience.</h1>
-            <p style="color: var(--accent-gray); margin-bottom: 35px; font-size: 1.1rem;">أفضل منتجات ومجموعات الأكواد الحصرية لـ FiveM وسيرفرات الديسكورد.</p>
-            <a href="store.html" class="btn-action" style="display: inline-flex; width: auto; padding: 14px 40px;"><i class="fa-solid fa-bag-shopping"></i> تصفح المتجر</a>
+        <section class="glass-card" style="text-align: center; padding: 60px 20px;">
+            <i class="fa-solid fa-rocket" style="font-size: 3rem; color: #fff; margin-bottom: 20px;"></i>
+            <h1 style="font-size: 2.5rem; margin-bottom: 15px;">Enhance your server experience.</h1>
+            <p style="color: #8a94a6; margin-bottom: 30px; font-size: 1.1rem;">أفضل منتجات ومجموعات الأكواد الحصرية لـ FiveM وسيرفرات الديسكورد.</p>
+            <a href="store.html" class="btn-action" style="display: inline-flex; width: auto; padding: 12px 35px; text-decoration: none;"><i class="fa-solid fa-bag-shopping"></i> تصفح المتجر</a>
         </section>
     </main>
-
-    <!-- نافذة تسجيل الدخول مع التوهج الأخضر/الأحمر -->
-    <div id="authModal" class="modal">
-        <div class="glass-card" style="width: 420px; text-align: center; position: relative;">
-            <button onclick="closeAuthModal()" style="position: absolute; left: 15px; top: 15px; background: none; border: none; color: #fff; cursor: pointer; font-size: 1.2rem;"><i class="fa-solid fa-xmark"></i></button>
-            
-            <h3><i class="fa-brands fa-discord"></i> تسجيل الدخول برقم الديسكورد</h3>
-            <p style="font-size: 0.85rem; color: var(--accent-gray); margin-top: 8px;">أدخل اسم مستخدم ديسكورد لتلقي كود التحقق من البوت في الخاص</p>
-            
-            <div id="step1" style="margin-top: 20px;">
-                <input type="text" id="discordUser" placeholder="Discord Username (e.g. user)" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid var(--glass-border); background: rgba(0,0,0,0.4); color: #fff; margin-bottom: 20px;">
-                <button onclick="sendOTP()" class="btn-action"><i class="fa-solid fa-paper-plane"></i> إرسال الكود</button>
-            </div>
-<div class="alert-banner">
-  <span>🚨</span>
-  <span>تنبيه: يجب الدخول إلى سيرفر الديسكورد لوصول كود التحقق لك!</span>
-</div>
-            <div id="step2" style="display: none;">
-                <div class="otp-boxes">
-                    <input type="text" maxlength="1" class="otp-input">
-                    <input type="text" maxlength="1" class="otp-input">
-                    <input type="text" maxlength="1" class="otp-input">
-                    <input type="text" maxlength="1" class="otp-input">
-                </div>
-                <button onclick="verifyOTP()" class="btn-action"><i class="fa-solid fa-check"></i> تأكيد الدخول</button>
-            </div>
-        </div>
-    </div>
 
     <script src="script.js"></script>
 </body>

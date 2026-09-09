@@ -4,58 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Back Store - الرئيسية</title>
-    <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="animated-bg"></div>
 
-    <!-- الشريط العلوي العائم -->
     <header class="navbar">
         <div class="nav-container">
-            
-            <!-- اللوجو واسم المتجر (على اليمين) -->
-            <div class="logo">
+            <!-- اللوجو (يمين) -->
+            <a href="index.html" class="logo">
                 <img src="logo.png" alt="Logo" class="logo-img" onerror="this.src='https://cdn-icons-png.flaticon.com/512/681/681494.png'">
                 <span>Back Store</span>
-            </div>
+            </a>
 
-            <!-- أزرار التنقل الدائرية في المنتصف (نفس الصورة الثانية) -->
+            <!-- الكبسولة العائمة (وسط) -->
             <nav class="nav-capsule">
-                <a href="index.html" class="nav-link active">
-                    <i class="fa-solid fa-house"></i> الرئيسية
-                </a>
-                <a href="store.html" class="nav-link">
-                    <i class="fa-solid fa-bag-shopping"></i> المتجر
-                </a>
-                <a href="rules.html" class="nav-link">
-                    <i class="fa-solid fa-scroll"></i> القوانين
-                </a>
-                <a href="about.html" class="nav-link">
-                    <i class="fa-solid fa-circle-info"></i> من نحن
-                </a>
-                <a href="licenses.html" class="nav-link">
-                    <i class="fa-solid fa-download"></i> تنزيلاتي
-                </a>
+                <a href="index.html" class="nav-link active"><i class="fa-solid fa-house"></i> الرئيسية</a>
+                <a href="store.html" class="nav-link"><i class="fa-solid fa-bag-shopping"></i> المتجر</a>
+                <a href="rules.html" class="nav-link"><i class="fa-solid fa-scroll"></i> القوانين</a>
+                <a href="about.html" class="nav-link"><i class="fa-solid fa-circle-info"></i> من نحن</a>
+                <a href="licenses.html" class="nav-link"><i class="fa-solid fa-download"></i> تنزيلاتي</a>
             </nav>
 
-            <!-- زاوية تسجيل الدخول (على اليسار) -->
+            <!-- زر الحساب (يسار) -->
             <div id="auth-section">
-                <a href="login.html" class="btn-login-nav" id="nav-login-btn">
+                <a href="login.html" class="btn-login-nav">
                     <i class="fa-solid fa-right-to-bracket"></i> تسجيل الدخول
                 </a>
             </div>
-
         </div>
     </header>
 
     <main class="container">
-        <section class="glass-card main-hero">
-            <i class="fa-solid fa-rocket hero-icon"></i>
-            <h1>Enhance your server experience.</h1>
-            <p>أفضل منتجات ومجموعات الأكواد الحصرية لـ FiveM وسيرفرات الديسكورد.</p>
-            <a href="store.html" class="btn-action"><i class="fa-solid fa-bag-shopping"></i> تصفح المتجر</a>
+        <section class="glass-card" style="text-align: center;">
+            <i class="fa-solid fa-rocket" style="font-size: 3rem; margin-bottom: 20px;"></i>
+            <h1 style="font-size: 2.5rem; margin-bottom: 15px;">Enhance your server experience.</h1>
+            <p style="color: #8a94a6; margin-bottom: 30px;">أفضل منتجات ومجموعات الأكواد الحصرية لـ FiveM وسيرفرات الديسكورد.</p>
+            <a href="store.html" class="btn-action" style="text-decoration: none; display: inline-block;">
+                <i class="fa-solid fa-bag-shopping"></i> تصفح المتجر
+            </a>
         </section>
     </main>
 

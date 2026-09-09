@@ -1,88 +1,188 @@
-/* إعطاء الأولية التامة لتصفير الأبعاد */
+/* ==========================================
+   1. الإعدادات العامة والخلفية المتحركة
+   ========================================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    background-color: #0d0e10;
+    background-color: #0b0c10;
     color: #ffffff;
-    font-family: system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
 }
 
-/* تنسيق الشريط العلوي */
-header.navbar {
+/* خلفية أنيميشن ناعمة */
+.animated-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle at 50% 20%, rgba(88, 101, 242, 0.15), transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.03), transparent 50%);
+    z-index: -1;
+    animation: pulseBg 10s ease-in-out infinite alternate;
+}
+
+@keyframes pulseBg {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(1.1); opacity: 1; }
+}
+
+/* ==========================================
+   2. الشريط العلوي العائم (Floating Navbar)
+   ========================================== */
+header, .navbar {
     width: 100%;
     padding: 20px 0;
     position: sticky;
     top: 0;
-    z-index: 999;
-    background: rgba(13, 14, 16, 0.9);
-    backdrop-filter: blur(10px);
+    z-index: 1000;
+    background: rgba(11, 12, 16, 0.75);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .nav-container {
-    max-width: 1200px;
+    max-width: 1250px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 25px;
     display: flex !important;
     flex-direction: row !important;
     justify-content: space-between !important;
     align-items: center !important;
 }
 
-/* 1. اللوجو على اليمين */
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: bold;
+/* اللوجو على اليمين */
+.logo, .logo-container {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #fff;
+    text-decoration: none;
 }
 
-.logo-img {
-    width: 35px;
-    height: 35px;
-    border-radius: 8px;
+.logo img, .logo-img {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
     object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* 2. القائمة في المنتصف */
-.nav-capsule {
+/* الكبسولة الزجاجية بالوسط */
+nav, .nav-capsule {
     display: flex !important;
     flex-direction: row !important;
-    align-items: center;
-    gap: 5px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 5px 10px;
+    align-items: center !important;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 6px 10px;
     border-radius: 50px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
-.nav-link {
-    color: #a0a0a0;
+/* إلغاء القوائم التقليدية (ul / li) */
+nav ul {
+    display: flex !important;
+    flex-direction: row !important;
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    gap: 6px !important;
+}
+
+/* روابط القائمة والأنيميشن */
+.nav-link, nav ul li a, nav a {
+    color: #9aa0a6;
     text-decoration: none;
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-size: 14px;
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link:hover, nav ul li a:hover, nav a:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+}
+
+.nav-link.active, nav ul li a.active, nav a.active {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* زر تسجيل الدخول على اليسار */
+#auth-section, .auth-btn-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.btn-login-nav {
+    background: #5865F2;
+    color: #fff;
+    text-decoration: none;
+    padding: 9px 20px;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    font-weight: 700;
     display: flex;
     align-items: center;
     gap: 8px;
-    transition: 0.2s ease;
+    transition: all 0.3s ease;
 }
 
-.nav-link:hover, .nav-link.active {
-    color: #fff;
-    background: rgba(255, 255, 255, 0.15);
+.btn-login-nav:hover {
+    background: #4752C4;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(88, 101, 242, 0.3);
 }
 
-/* 3. زر الدخول على اليسار */
-.btn-login-nav {
-    background: #5865f2;
-    color: #fff;
-    text-decoration: none;
-    padding: 8px 18px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: bold;
+/* ==========================================
+   3. محتوى الصفحات والمربعات
+   ========================================== */
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.glass-card {
+    background: rgba(22, 25, 35, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 40px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.btn-action {
+    background: #ffffff;
+    color: #0b0c10;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-action:hover {
+    background: #e0e0e0;
+    transform: translateY(-2px);
 }

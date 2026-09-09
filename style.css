@@ -270,3 +270,38 @@ nav a:hover, nav a.active {
     border-radius: 6px;
     cursor: pointer;
 }
+/* منع اهتزاز الشريط والتنسيق الثابت */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+}
+
+.nav-link {
+  transition: all 0.3s ease;
+  border-bottom: 2px solid transparent;
+}
+
+/* أنيميشن انتقالي بين الصفحات */
+body {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* تنبيه تسجيل الدخول الأحمر */
+.alert-banner {
+  background-color: #ff3333;
+  color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+  font-weight: bold;
+}

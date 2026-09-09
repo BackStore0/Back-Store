@@ -711,3 +711,135 @@ body.login-body {
     font-size: 13px;
     font-weight: bold;
 }
+/* ==========================================
+   تنسيق الشريط العلوي العائم (Floating Capsule Navbar)
+   ========================================== */
+.navbar {
+    width: 100%;
+    padding: 15px 30px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(11, 12, 16, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.nav-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 1. اللوجو على اليمين */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: #fff;
+}
+
+.logo-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 2. الكبسولة الزجاجية بالوسط (نفس الصورة الثانية) */
+.nav-capsule {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 6px;
+    border-radius: 50px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* 3. أنيميشن وروابط القائمة */
+.nav-link {
+    color: #9aa0a6;
+    text-decoration: none;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+/* تأثير التمرير والتفعيل (Hover & Active Animation) */
+.nav-link:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-1px);
+}
+
+.nav-link.active {
+    color: #ffffff;
+    background: #2a2d34;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.nav-link i {
+    font-size: 0.95rem;
+    transition: transform 0.3s ease;
+}
+
+.nav-link:hover i {
+    transform: scale(1.15);
+}
+
+/* 4. زر تسجيل الدخول على اليسار */
+.btn-login-nav {
+    background: #5865F2;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-login-nav:hover {
+    background: #4752C4;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(88, 101, 242, 0.4);
+}
+
+/* تنسيق المربع الرئيسي بالمنتصف */
+.main-hero {
+    text-align: center;
+    padding: 70px 20px !important;
+    margin-top: 40px;
+}
+
+.hero-icon {
+    font-size: 3rem;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.main-hero h1 {
+    font-size: 2.4rem;
+    margin-bottom: 15px;
+}
+
+.main-hero p {
+    color: #8a94a6;
+    margin-bottom: 30px;
+}

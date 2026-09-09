@@ -4,45 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Back Store - الرئيسية</title>
-    <link rel="icon" type="image/png" href="https://i.imgur.com/vH9f4jN.jpg">
+    <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="animated-bg"></div>
 
-    <!-- الشريط العلوي الموحد -->
+    <!-- الشريط العلوي العائم -->
     <header class="navbar">
         <div class="nav-container">
-            <!-- زاوية تسجيل الدخول / حساب المستخدم -->
+            
+            <!-- اللوجو واسم المتجر (على اليمين) -->
+            <div class="logo">
+                <img src="logo.png" alt="Logo" class="logo-img" onerror="this.src='https://cdn-icons-png.flaticon.com/512/681/681494.png'">
+                <span>Back Store</span>
+            </div>
+
+            <!-- أزرار التنقل الدائرية في المنتصف (نفس الصورة الثانية) -->
+            <nav class="nav-capsule">
+                <a href="index.html" class="nav-link active">
+                    <i class="fa-solid fa-house"></i> الرئيسية
+                </a>
+                <a href="store.html" class="nav-link">
+                    <i class="fa-solid fa-bag-shopping"></i> المتجر
+                </a>
+                <a href="rules.html" class="nav-link">
+                    <i class="fa-solid fa-scroll"></i> القوانين
+                </a>
+                <a href="about.html" class="nav-link">
+                    <i class="fa-solid fa-circle-info"></i> من نحن
+                </a>
+                <a href="licenses.html" class="nav-link">
+                    <i class="fa-solid fa-download"></i> تنزيلاتي
+                </a>
+            </nav>
+
+            <!-- زاوية تسجيل الدخول (على اليسار) -->
             <div id="auth-section">
                 <a href="login.html" class="btn-login-nav" id="nav-login-btn">
                     <i class="fa-solid fa-right-to-bracket"></i> تسجيل الدخول
                 </a>
             </div>
 
-            <!-- روابط القائمة -->
-            <nav class="nav-links">
-                <a href="index.html" class="nav-link active"><i class="fa-solid fa-house"></i> الرئيسية</a>
-                <a href="store.html" class="nav-link"><i class="fa-solid fa-store"></i> المتجر</a>
-                <a href="about.html" class="nav-link"><i class="fa-solid fa-circle-info"></i> عن المتجر</a>
-                <a href="rules.html" class="nav-link"><i class="fa-solid fa-gavel"></i> القوانين</a>
-            </nav>
-
-            <!-- اللوجو واسم المتجر -->
-            <div class="logo">
-                <span>Back Store</span>
-                <img src="https://i.imgur.com/vH9f4jN.jpg" alt="Logo" class="logo-img">
-            </div>
         </div>
     </header>
 
     <main class="container">
-        <section class="glass-card" style="text-align: center; padding: 60px 20px;">
-            <i class="fa-solid fa-rocket" style="font-size: 3rem; color: #fff; margin-bottom: 20px;"></i>
-            <h1 style="font-size: 2.5rem; margin-bottom: 15px;">Enhance your server experience.</h1>
-            <p style="color: #8a94a6; margin-bottom: 30px; font-size: 1.1rem;">أفضل منتجات ومجموعات الأكواد الحصرية لـ FiveM وسيرفرات الديسكورد.</p>
-            <a href="store.html" class="btn-action" style="display: inline-flex; width: auto; padding: 12px 35px; text-decoration: none;"><i class="fa-solid fa-bag-shopping"></i> تصفح المتجر</a>
+        <section class="glass-card main-hero">
+            <i class="fa-solid fa-rocket hero-icon"></i>
+            <h1>Enhance your server experience.</h1>
+            <p>أفضل منتجات ومجموعات الأكواد الحصرية لـ FiveM وسيرفرات الديسكورد.</p>
+            <a href="store.html" class="btn-action"><i class="fa-solid fa-bag-shopping"></i> تصفح المتجر</a>
         </section>
     </main>
 

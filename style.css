@@ -507,3 +507,142 @@ body.login-body {
     font-size: 13px;
     text-align: center;
 }
+/* ضبط خلفية صفحة الدخول والتوسيط الكامل */
+body.login-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #0b0b0d;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+}
+
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+
+/* الإطار المتحرك بالألوان (Rainbow Gradient Animation) */
+.rainbow-border {
+    position: relative;
+    background-color: #121216;
+    border-radius: 16px;
+    padding: 30px;
+    width: 100%;
+    max-width: 390px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    text-align: right;
+    z-index: 1;
+}
+
+.rainbow-border::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #ff0055, #7600ff, #00d4ff, #00ff66, #ff0055);
+    background-size: 400%;
+    border-radius: 18px;
+    z-index: -1;
+    animation: animateGlow 8s linear infinite;
+}
+
+@keyframes animateGlow {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 200% 0%; }
+    100% { background-position: 0% 0%; }
+}
+
+.login-box h2 {
+    color: #ffffff;
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 22px;
+}
+
+.alert-banner {
+    background-color: rgba(255, 51, 51, 0.12);
+    border: 1px solid #ff3333;
+    color: #ff4d4d;
+    padding: 12px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.input-group {
+    margin-bottom: 18px;
+}
+
+.input-group label {
+    display: block;
+    color: #ccc;
+    margin-bottom: 8px;
+    font-size: 13px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 14px;
+    background-color: #1a1a20;
+    border: 1px solid #2d2d38;
+    border-radius: 8px;
+    color: #fff;
+    outline: none;
+    box-sizing: border-box;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #5865F2;
+    box-shadow: 0 0 8px rgba(88, 101, 242, 0.4);
+}
+
+.btn-primary, .btn-success {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-primary {
+    background-color: #5865F2;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #4752C4;
+}
+
+.btn-success {
+    background-color: #2eb85c;
+    color: #fff;
+}
+
+.btn-success:hover {
+    background-color: #249349;
+}
+
+.status-msg {
+    margin-top: 15px;
+    font-size: 13px;
+    text-align: center;
+    line-height: 1.5;
+}

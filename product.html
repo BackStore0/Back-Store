@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>Back Store - تفاصيل المنتج</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="animated-bg"></div>
+    <header>
+        <div class="logo-container">
+            <img src="https://i.imgur.com/vH9f4jN.jpg" alt="Logo">
+            <span>Back Store</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html"><i class="fa-solid fa-house"></i> الرئيسية</a></li>
+                <li><a href="store.html"><i class="fa-solid fa-store"></i> المتجر</a></li>
+                <li><a href="about.html"><i class="fa-solid fa-circle-info"></i> عن المتجر</a></li>
+                <li><a href="rules.html"><i class="fa-solid fa-gavel"></i> القوانين</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="glass-card" style="display: flex; gap: 30px; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 300px;">
+                <img id="mainImg" src="" style="width: 100%; height: 300px; object-fit: cover; border-radius: 12px; border: 1px solid var(--card-border);">
+                <div id="thumbnails" style="display: flex; gap: 10px; margin-top: 10px;">
+                    <!-- الصور الإضافية للتقليب -->
+                </div>
+            </div>
+            <div style="flex: 1; min-width: 300px;">
+                <h1 id="prodTitle"></h1>
+                <h2 id="prodPrice" style="color: #8a94a6; margin: 15px 0;"></h2>
+                <p id="prodDesc" style="line-height: 1.8; color: #ccc;"></p>
+                <button onclick="buyNow()" class="btn-action" style="margin-top: 30px;"><i class="fa-brands fa-discord"></i> شراء الآن (الانتقال للديسكورد)</button>
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+    <script>
+        // تحميل تفاصيل المنتج المختار
+        const prod = JSON.parse(localStorage.getItem('selectedProduct'));
+        if(prod) {
+            document.getElementById('prodTitle').innerText = prod.name;
+            document.getElementById('prodPrice').innerText = prod.price + ' $';
+            document.getElementById('prodDesc').innerText = prod.desc;
+            document.getElementById('mainImg').src = prod.images[0];
+            
+            const thumbs = document.getElementById('thumbnails');
+            prod.images.forEach(imgUrl => {
+                let img = document.createElement('img');
+                img.src = imgUrl;
+                img.style = "width: 60px; height: 60px; object-fit: cover; border-radius: 6px; cursor: pointer;";
+                img.onclick = () => document.getElementById('mainImg').src = imgUrl;
+                thumbs.appendChild(img);
+            });
+        }
+        function buyNow() {
+            window.location.href = "https://discord.gg/YOUR_INVITE_LINK"; // وضع رابط دعوة الديسكورد هنا
+        }
+    </script>
+</body>
+</html>

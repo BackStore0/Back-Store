@@ -1,0 +1,272 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap');
+
+:root {
+    --bg-color: #0d0e10;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-hover-border: rgba(255, 255, 255, 0.25);
+    --text-color: #e2e8f0;
+    --accent-gray: #8a94a6;
+    --success-green: #00e676;
+    --error-red: #ff5252;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cairo', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* خلفية منقطة متحركة */
+.animated-bg {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: -2;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 0);
+    background-size: 24px 24px;
+    animation: bgMove 25s linear infinite;
+}
+
+@keyframes bgMove {
+    0% { background-position: 0 0; }
+    100% { background-position: 240px 240px; }
+}
+
+/* الضوء التفاعلي المتحرك مع الماوس */
+.mouse-light {
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    transition: width 0.2s, height 0.2s;
+}
+
+/* الهيدر وشريط التنقل */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 6%;
+    background: rgba(13, 14, 16, 0.5);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--glass-border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-container img {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid var(--glass-border);
+}
+
+.logo-container span {
+    font-size: 1.3rem;
+    font-weight: 800;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 15px;
+}
+
+nav a {
+    color: var(--accent-gray);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 10px;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+nav a:hover, nav a.active {
+    color: #fff;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+}
+
+.auth-btns button {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: #fff;
+    padding: 10px 22px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.auth-btns button:hover {
+    border-color: var(--glass-hover-border);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+/* المربعات والبطاقات الشفافة الزجاجية بدعم الـ 3D */
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 30px;
+    transition: transform 0.2s ease, border-color 0.3s, box-shadow 0.3s;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.glass-card:hover {
+    border-color: var(--glass-hover-border);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+/* شبكة المنتجات واسعة بدون حدود ضيقة للصور */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+    margin-top: 25px;
+}
+
+.product-card {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+.btn-action {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: #ffffff;
+    color: #0d0e10;
+    font-weight: 800;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-action:hover {
+    background: #e2e8f0;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+}
+
+/* نافذة كود التحقق ومربعات الـ OTP المتغيرة الألوان */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(12px);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.otp-boxes {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin: 25px 0;
+    direction: ltr;
+}
+
+.otp-boxes input {
+    width: 55px;
+    height: 60px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 12px;
+    border: 2px solid var(--glass-border);
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    outline: none;
+    transition: 0.3s;
+}
+
+/* تغير ألوان مربعات الكود عند الخطأ والنجاح */
+.otp-boxes input.correct {
+    border-color: var(--success-green) !important;
+    box-shadow: 0 0 15px var(--success-green);
+    color: var(--success-green);
+}
+
+.otp-boxes input.error {
+    border-color: var(--error-red) !important;
+    box-shadow: 0 0 15px var(--error-red);
+    color: var(--error-red);
+}
+
+/* جداول لوحة التحكم */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.admin-table th, .admin-table td {
+    padding: 12px 15px;
+    text-align: right;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.admin-table th {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--accent-gray);
+}
+
+.btn-danger {
+    background: var(--error-red);
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}

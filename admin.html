@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>Back Store - لوحة الإدارة الشاملة</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="animated-bg"></div>
+    <main class="container">
+        
+        <!-- قسم إضافة منتج جديد -->
+        <div class="glass-card" style="margin-bottom: 30px;">
+            <h2><i class="fa-solid fa-plus-node"></i> إضافة منتج جديد للمتجر</h2>
+            <form id="addProductForm" style="margin-top: 20px; display: flex; flex-direction: column; gap: 15px;">
+                <input type="text" id="pName" placeholder="اسم المنتج" required style="padding: 12px; border-radius: 8px; border: 1px solid var(--glass-border); background: rgba(0,0,0,0.5); color: #fff;">
+                <input type="number" id="pPrice" placeholder="السعر ($)" required style="padding: 12px; border-radius: 8px; border: 1px solid var(--glass-border); background: rgba(0,0,0,0.5); color: #fff;">
+                <input type="text" id="pImages" placeholder="روابط الصور مفصولة بفواصل (مثال: img1.jpg, img2.jpg)" required style="padding: 12px; border-radius: 8px; border: 1px solid var(--glass-border); background: rgba(0,0,0,0.5); color: #fff;">
+                <textarea id="pDesc" placeholder="مواصفات ووصف المنتج" rows="3" required style="padding: 12px; border-radius: 8px; border: 1px solid var(--glass-border); background: rgba(0,0,0,0.5); color: #fff;"></textarea>
+                <button type="submit" class="btn-action"><i class="fa-solid fa-floppy-disk"></i> حفظ ونشر المنتج فوراً</button>
+            </form>
+        </div>
+
+        <!-- لوحة التحكم بالمنتجات المعروضة (حذف وتعديل) -->
+        <div class="glass-card" style="margin-bottom: 30px;">
+            <h2><i class="fa-solid fa-list-check"></i> إدارة جميع المنتجات المعروضة</h2>
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>الصورة</th>
+                        <th>اسم المنتج</th>
+                        <th>السعر</th>
+                        <th>التحكم</th>
+                    </tr>
+                </thead>
+                <tbody id="adminProductsList"></tbody>
+            </table>
+        </div>
+
+        <!-- لوحة التحكم بالتراخيص (Licenses) -->
+        <div class="glass-card">
+            <h2><i class="fa-solid fa-key"></i> إدارة التراخيص (Licenses)</h2>
+            <div style="display: flex; gap: 10px; margin-top: 15px;">
+                <input type="text" id="licenseKey" placeholder="أدخل كود الترخيص الجديد" style="flex: 1; padding: 10px; border-radius: 8px; border: 1px solid var(--glass-border); background: rgba(0,0,0,0.5); color: #fff;">
+                <button onclick="addLicense()" class="btn-action" style="width: auto;"><i class="fa-solid fa-key"></i> إضافة ترخيص</button>
+            </div>
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>مفتاح الترخيص</th>
+                        <th>الحالة</th>
+                        <th>إجراء</th>
+                    </tr>
+                </thead>
+                <tbody id="licenseTable"></tbody>
+            </table>
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        // تحميل وإدارة المنتجات للادمن
+        function loadAdminProducts() {
+            const products = JSON.parse(localStorage.getItem('products')) || [];
+            const tbody = document.getElementById('adminProductsList');
+            tbody.innerHTML = '';
+
+            products.forEach((p, index) => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td><img src="${p.images[0]}" style="width: 50px; height: 50px; border-radius: 6px; object-fit: cover;"></td>
+                        <td>${p.name}</td>
+                        <td>$ ${p.price}</td>
+                        <td>
+                            <button onclick="deleteProduct(${index})" class="btn-danger"><i class="fa-solid fa-trash"></i> حذف</button>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        document.getElementById('addProductForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const products = JSON.parse(localStorage.getItem('products')) || [];
+            const imgs = document.getElementById('pImages').value.split(',').map(url => url.trim());
+            
+            const newProd = {
+                id: Date.now(),
+                name: document.getElementById('pName').value,
+                price: document.getElementById('pPrice').value,
+                images: imgs,
+                desc: document.getElementById('pDesc').value
+            };
+            products.push(newProd);
+            localStorage.setItem('products', JSON.stringify(products));
+            alert('تم إضافة المنتج وتحديث المتجر تلقائياً!');
+            loadAdminProducts();
+            this.reset();
+        });
+
+        function deleteProduct(index) {
+            if(confirm('هل أنت تأكد من حذف هذا المنتج؟')) {
+                const products = JSON.parse(localStorage.getItem('products')) || [];
+                products.splice(index, 1);
+                localStorage.setItem('products', JSON.stringify(products));
+                loadAdminProducts();
+            }
+        }
+
+        // إدارة التراخيص
+        function addLicense() {
+            const key = document.getElementById('licenseKey').value.trim();
+            if(!key) return;
+            const licenses = JSON.parse(localStorage.getItem('licenses')) || [];
+            licenses.push({ key: key, status: 'نشط' });
+            localStorage.setItem('licenses', JSON.stringify(licenses));
+            document.getElementById('licenseKey').value = '';
+            loadLicenses();
+        }
+
+        function loadLicenses() {
+            const licenses = JSON.parse(localStorage.getItem('licenses')) || [];
+            const tbody = document.getElementById('licenseTable');
+            tbody.innerHTML = '';
+            licenses.forEach((l, index) => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td><code>${l.key}</code></td>
+                        <td style="color: var(--success-green);">${l.status}</td>
+                        <td><button onclick="deleteLicense(${index})" class="btn-danger">إلغاء</button></td>
+                    </tr>
+                `;
+            });
+        }
+
+        function deleteLicense(index) {
+            const licenses = JSON.parse(localStorage.getItem('licenses')) || [];
+            licenses.splice(index, 1);
+            localStorage.setItem('licenses', JSON.stringify(licenses));
+            loadLicenses();
+        }
+
+        window.onload = () => {
+            loadAdminProducts();
+            loadLicenses();
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Back Store - تسجيل الدخول</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- القائمة العلوية -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo.png" alt="Back Store Logo" class="logo-img">
+                <span>Back Store</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i> الرئيسية</a>
+                <a href="store.html" class="nav-link"><i class="fa-solid fa-store"></i> المتجر</a>
+                <a href="licenses.html" class="nav-link"><i class="fa-solid fa-key"></i> التراخيص</a>
+                <a href="about.html" class="nav-link"><i class="fa-solid fa-circle-info"></i> عن المتجر</a>
+                <a href="rules.html" class="nav-link"><i class="fa-solid fa-gavel"></i> القوانين</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- حاوية تسجيل الدخول -->
+    <div class="login-container">
+        <div class="login-box">
+            <h2><i class="fa-solid fa-right-to-bracket"></i> تسجيل الدخول</h2>
+            
+            <!-- التنبيه الأحمر الإجباري -->
+            <div class="alert-banner">
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <span>تنبيه: يجب أن تكون متواجدًا في سيرفر الديسكورد ليصلك كود التحقق!</span>
+            </div>
+
+            <!-- النموذج الأول: إدخال ايدي الديسكورد -->
+            <form id="step-1-form">
+                <div class="input-group">
+                    <label for="discord-id"><i class="fa-brands fa-discord"></i> ايدي الديسكورد (Discord User ID):</label>
+                    <input type="text" id="discord-id" placeholder="مثال: 123456789012345678" required>
+                </div>
+                <button type="submit" id="send-code-btn" class="btn-primary">إرسال كود التحقق</button>
+            </form>
+
+            <!-- النموذج الثاني: إدخال كود التحقق (مخفي حتى يتم إرسال الكود) -->
+            <form id="step-2-form" style="display: none; margin-top: 20px;">
+                <div class="input-group">
+                    <label for="verify-code"><i class="fa-solid fa-lock"></i> كود التحقق:</label>
+                    <input type="text" id="verify-code" placeholder="أدخل الكود المكون من 4 أرقام" required>
+                </div>
+                <button type="submit" id="verify-btn" class="btn-success">تأكيد الدخول</button>
+            </form>
+
+            <div id="status-message" class="status-msg"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
